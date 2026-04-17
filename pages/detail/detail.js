@@ -154,9 +154,6 @@ Page({
     var index = e.currentTarget.dataset.index
     var mediaItem = this.data.media[index]
 
-    // 隐藏樱花特效
-    this.setData({ showSakura: false })
-
     if (mediaItem.isVideo) {
       // 播放视频 - 移除OSS截图参数，获取原始视频URL
       var originalVideoUrl = mediaItem.url.split('?')[0]
@@ -172,23 +169,11 @@ Page({
         }
       }
 
-      var that = this
       wx.previewImage({
         current: mediaItem.url,
-        urls: imageUrls,
-        complete: function() {
-          // 预览结束后恢复樱花特效
-          that.setData({ showSakura: true })
-        }
+        urls: imageUrls
       })
     }
-  },
-
-  /**
-   * 页面显示时恢复樱花特效
-   */
-  onShow() {
-    this.setData({ showSakura: true })
   },
 
   onShareAppMessage() {

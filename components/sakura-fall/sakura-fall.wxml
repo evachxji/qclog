@@ -1,5 +1,0 @@
-<view class="sakura-container" wx:if="{{visible}}">
-  <view class="sakura" wx:for="{{sakuraList}}" wx:key="id" style="{{item.style}}">
-    <view class="petal" style="{{item.petalStyle}}"></view>
-  </view>
-</view>

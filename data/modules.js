@@ -3,7 +3,6 @@ module.exports = [
   {
     id: 1,
     name: '3月小确幸',
-    cover: 'https://yechen77.oss-cn-hangzhou.aliyuncs.com/3%E6%9C%88%E5%B0%8F%E7%A1%AE%E5%B9%B8.mp4',
     media: [
       'https://yechen77.oss-cn-hangzhou.aliyuncs.com/3%E6%9C%88%E5%B0%8F%E7%A1%AE%E5%B9%B8.mp4'
     ]
@@ -11,7 +10,6 @@ module.exports = [
   {
     id: 2,
     name: 'AI故事',
-    cover: 'https://yechen77.oss-cn-hangzhou.aliyuncs.com/AI故事/1.jpg',
     media: [
       'https://yechen77.oss-cn-hangzhou.aliyuncs.com/AI故事/1.jpg',
       'https://yechen77.oss-cn-hangzhou.aliyuncs.com/AI故事/2.jpg',
@@ -27,7 +25,6 @@ module.exports = [
   {
     id: 3,
     name: '【2026】寻觅年味',
-    cover: 'https://yechen77.oss-cn-hangzhou.aliyuncs.com/【2026】寻觅年味/01.jpg',
     media: [
       'https://yechen77.oss-cn-hangzhou.aliyuncs.com/【2026】寻觅年味/01.jpg',
       'https://yechen77.oss-cn-hangzhou.aliyuncs.com/【2026】寻觅年味/02.jpg',
@@ -59,7 +56,6 @@ module.exports = [
   {
     id: 4,
     name: '【2025】岁岁伴朝夕',
-    cover: 'https://yechen77.oss-cn-hangzhou.aliyuncs.com/【2025】岁岁伴朝夕/01.jpg',
     media: [
       'https://yechen77.oss-cn-hangzhou.aliyuncs.com/【2025】岁岁伴朝夕/01.jpg',
       'https://yechen77.oss-cn-hangzhou.aliyuncs.com/【2025】岁岁伴朝夕/02.jpg',
@@ -229,7 +225,6 @@ module.exports = [
   {
     id: 7,
     name: '【2022】愿有岁月可回首',
-    cover: 'https://yechen77.oss-cn-hangzhou.aliyuncs.com/【2022】愿有岁月可回首/01.jpg',
     media: [
       'https://yechen77.oss-cn-hangzhou.aliyuncs.com/【2022】愿有岁月可回首/01.jpg',
       'https://yechen77.oss-cn-hangzhou.aliyuncs.com/【2022】愿有岁月可回首/02.mp4',

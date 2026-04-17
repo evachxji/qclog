@@ -57,8 +57,10 @@ Page({
    * 检查是否为视频
    */
   checkIsVideo(url) {
-    var len = url.length
-    var suffix = url.substring(len - 4, len)
+    // 移除URL参数后再判断后缀
+    var urlWithoutParams = url.split('?')[0]
+    var len = urlWithoutParams.length
+    var suffix = urlWithoutParams.substring(len - 4, len).toLowerCase()
     return suffix === '.mp4'
   },
 
@@ -85,6 +87,9 @@ Page({
       if (item.isVideo) {
         item.orientation = 'landscape'
       }
+      
+      // 初始化加载状态
+      item.loaded = false
       
       // 分配到较短的列
       if (leftCount <= rightCount) {
@@ -118,23 +123,28 @@ Page({
     imageInfoMap[originalIndex] = {
       width: width,
       height: height,
-      orientation: orientation,
-      loaded: true
-    }
-
-    // 更新媒体项的朝向
-    var media = this.data.media
-    for (var i = 0; i < media.length; i++) {
-      if (media[i].originalIndex === originalIndex) {
-        media[i].orientation = orientation
-        break
-      }
+      orientation: orientation
     }
 
     this.setData({
-      imageInfoMap: imageInfoMap,
-      media: [...media]
+      imageInfoMap: imageInfoMap
     })
+
+    // 延迟0.2秒后再展示图片（故意停留效果）
+    setTimeout(() => {
+      // 更新媒体项的加载状态和朝向
+      var media = this.data.media
+      for (var i = 0; i < media.length; i++) {
+        if (media[i].originalIndex === originalIndex) {
+          media[i].loaded = true
+          media[i].orientation = orientation
+          break
+        }
+      }
+      this.setData({
+        media: [...media]
+      })
+    }, 250)
   },
 
   /**
@@ -144,10 +154,14 @@ Page({
     var index = e.currentTarget.dataset.index
     var mediaItem = this.data.media[index]
 
+    // 隐藏樱花特效
+    this.setData({ showSakura: false })
+
     if (mediaItem.isVideo) {
-      // 播放视频
+      // 播放视频 - 移除OSS截图参数，获取原始视频URL
+      var originalVideoUrl = mediaItem.url.split('?')[0]
       wx.navigateTo({
-        url: '/pages/video/video?url=' + encodeURIComponent(mediaItem.url)
+        url: '/pages/video/video?url=' + encodeURIComponent(originalVideoUrl)
       })
     } else {
       // 预览图片
@@ -158,14 +172,24 @@ Page({
         }
       }
 
+      var that = this
       wx.previewImage({
         current: mediaItem.url,
-        urls: imageUrls
+        urls: imageUrls,
+        complete: function() {
+          // 预览结束后恢复樱花特效
+          that.setData({ showSakura: true })
+        }
       })
     }
   },
 
-  onShow() {},
+  /**
+   * 页面显示时恢复樱花特效
+   */
+  onShow() {
+    this.setData({ showSakura: true })
+  },
 
   onShareAppMessage() {
     return {

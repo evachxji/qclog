@@ -4,6 +4,11 @@
     src="{{videoUrl}}"
     controls
     autoplay
+    object-fit="contain"
+    show-center-play-btn
+    show-play-btn
+    enable-progress-gesture
     style="width: 100%; height: 100vh;"
+    binderror="onVideoError"
   />
 </view>

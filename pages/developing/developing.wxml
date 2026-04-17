@@ -1,6 +1,52 @@
 <view class="container">
-  <view class="content">
-    <text class="title">功能开发中</text>
+  <!-- 装饰背景圆 -->
+  <view class="decor-circle decor-circle-1"></view>
+  <view class="decor-circle decor-circle-2"></view>
+  <view class="decor-circle decor-circle-3"></view>
+
+  <!-- 主内容区 -->
+  <view class="content-wrapper">
+    <!-- 图标动画 -->
+    <view class="icon-container">
+      <view class="gear gear-large">⚙</view>
+      <view class="gear gear-small">⚙</view>
+      <view class="sparkle sparkle-1">✦</view>
+      <view class="sparkle sparkle-2">✦</view>
+      <view class="sparkle sparkle-3">✦</view>
+    </view>
+
+    <!-- 标题 -->
+    <view class="title-box">
+      <text class="main-title">功能开发中</text>
+      <view class="title-line"></view>
+    </view>
+
+    <!-- 描述卡片 -->
+    <view class="desc-card">
+      <view class="card-accent"></view>
+      <text class="desc-text">我们正在努力构建更多精彩功能</text>
+      <text class="sub-text">敬请期待，美好即将呈现 ✿</text>
+      
+      <!-- 进度指示器 -->
+      <view class="progress-dots">
+        <view class="dot dot-1"></view>
+        <view class="dot dot-2"></view>
+        <view class="dot dot-3"></view>
+      </view>
+    </view>
+
+    <!-- 装饰分割线 -->
+    <view class="divider">
+      <view class="divider-line"></view>
+      <text class="divider-icon">❋</text>
+      <view class="divider-line"></view>
+    </view>
+
+    <!-- 返回提示 -->
+    <view class="back-hint">
+      <text class="hint-text">点击下方标签返回首页</text>
+      <view class="hint-arrow">↓</view>
+    </view>
   </view>
 </view>
 

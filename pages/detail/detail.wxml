@@ -17,13 +17,21 @@
         wx:for="{{media}}"
         wx:key="originalIndex"
         wx:if="{{item.column === 'left'}}"
-        class="media-item {{item.orientation}}"
+        class="media-item {{item.orientation}} {{item.loaded === false ? 'loading' : ''}}"
         bindtap="previewMedia"
         data-index="{{item.originalIndex}}"
       >
         <view class="media-preview">
+          <!-- Loading 状态 -->
+          <view class="loading-overlay" wx:if="{{item.loaded === false}}">
+            <view class="heart-loader">
+              <view class="heart"></view>
+              <view class="heart-ring ring-1"></view>
+              <view class="heart-ring ring-2"></view>
+            </view>
+          </view>
           <image
-            class="media-img"
+            class="media-img {{item.loaded === true ? 'loaded' : ''}}"
             src="{{item.thumbnail}}"
             mode="aspectFill"
             lazy-load="true"
@@ -31,7 +39,7 @@
             data-original-index="{{item.originalIndex}}"
           />
           <!-- 视频播放按钮 -->
-          <view wx:if="{{item.isVideo}}" class="video-play-btn">
+          <view wx:if="{{item.isVideo === true}}" class="video-play-btn">
             <view class="play-icon"></view>
           </view>
         </view>
@@ -44,13 +52,21 @@
         wx:for="{{media}}"
         wx:key="originalIndex"
         wx:if="{{item.column === 'right'}}"
-        class="media-item {{item.orientation}}"
+        class="media-item {{item.orientation}} {{item.loaded === false ? 'loading' : ''}}"
         bindtap="previewMedia"
         data-index="{{item.originalIndex}}"
       >
         <view class="media-preview">
+          <!-- Loading 状态 -->
+          <view class="loading-overlay" wx:if="{{item.loaded === false}}">
+            <view class="heart-loader">
+              <view class="heart"></view>
+              <view class="heart-ring ring-1"></view>
+              <view class="heart-ring ring-2"></view>
+            </view>
+          </view>
           <image
-            class="media-img"
+            class="media-img {{item.loaded === true ? 'loaded' : ''}}"
             src="{{item.thumbnail}}"
             mode="aspectFill"
             lazy-load="true"
@@ -58,7 +74,7 @@
             data-original-index="{{item.originalIndex}}"
           />
           <!-- 视频播放按钮 -->
-          <view wx:if="{{item.isVideo}}" class="video-play-btn">
+          <view wx:if="{{item.isVideo === true && item.loaded === true}}" class="video-play-btn">
             <view class="play-icon"></view>
           </view>
         </view>

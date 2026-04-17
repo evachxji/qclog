@@ -31,18 +31,28 @@ Page({
   },
   
   /**
-   * 处理视频封面图，为mp4视频添加截图参数显示第一帧
+   * 处理封面图：从media中随机选择一张，视频则添加截图参数
    */
   processVideoCover() {
     var modules = this.data.modules
     for (var i = 0; i < modules.length; i++) {
       var module = modules[i]
-      // 处理模块封面
-      if (this.isVideoUrl(module.cover)) {
-        module.cover = module.cover + '?x-oss-process=video/snapshot,t_0,f_jpg,m_fast'
-      }
-      // 处理媒体列表中的视频缩略图
       var media = module.media
+
+      // 从 media 中随机选择一张作为封面
+      if (media && media.length > 0) {
+        var randomIndex = Math.floor(Math.random() * media.length)
+        var coverUrl = media[randomIndex]
+
+        // 如果是视频，添加截图参数
+        if (this.isVideoUrl(coverUrl)) {
+          coverUrl = coverUrl + '?x-oss-process=video/snapshot,t_0,f_jpg,m_fast'
+        }
+
+        module.cover = coverUrl
+      }
+
+      // 处理媒体列表中的视频缩略图
       for (var j = 0; j < media.length; j++) {
         if (this.isVideoUrl(media[j])) {
           media[j] = media[j] + '?x-oss-process=video/snapshot,t_0,f_jpg,m_fast'
@@ -53,7 +63,7 @@ Page({
       modules: modules
     })
   },
-  
+
   /**
    * 判断是否为视频URL
    */

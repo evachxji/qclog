@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/developing/developing",
+    "pages/detail/detail",
+    "pages/video/video"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#e65100",
+    "navigationBarTitleText": "暖色Vlog",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#fff3e0"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#fff3e0",
+    "selectedColor": "#ffffff",
+    "backgroundColor": "#e65100",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "相册"
+      },
+      {
+        "pagePath": "pages/developing/developing",
+        "text": "开发中"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

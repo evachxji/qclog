@@ -1,0 +1,8 @@
+/* 全局样式 */
+page {
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  color: #5d4037;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}

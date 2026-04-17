@@ -1,0 +1,44 @@
+<!-- custom-tab-bar/index.wxml -->
+<view class="tb-tabbar">
+
+  <!-- 顶部阴影 -->
+  <view class="tb-shadow"></view>
+
+  <!-- Tab 项 -->
+  <view
+    wx:for="{{tabs}}"
+    wx:key="index"
+    class="tb-item {{active === index ? 'tb-item-active' : ''}}"
+    bindtap="onTabTap"
+    data-index="{{index}}"
+    data-path="{{item.path}}"
+  >
+    <!-- SVG 图标 -->
+    <view class="tb-icon-wrap">
+      <!-- 相册：宫格图标 -->
+      <svg wx:if="{{index === 0}}" class="tb-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+        <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
+        <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+        <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor"/>
+      </svg>
+      <!-- 开发中：对话气泡图标 -->
+      <svg wx:if="{{index === 1}}" class="tb-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 4h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="8" cy="11" r="1" fill="currentColor"/>
+        <circle cx="12" cy="11" r="1" fill="currentColor"/>
+        <circle cx="16" cy="11" r="1" fill="currentColor"/>
+      </svg>
+
+      <!-- 点击波纹 -->
+      <view class="tb-ripple" wx:if="{{ripple === index}}"></view>
+    </view>
+
+    <!-- 文字标签 -->
+    <text class="tb-label">{{item.text}}</text>
+
+    <!-- 底部高亮指示线 -->
+    <view class="tb-indicator" wx:if="{{active === index}}"></view>
+  </view>
+
+</view>

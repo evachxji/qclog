@@ -1,0 +1,124 @@
+/* pages/detail/detail.wxss */
+
+.container {
+  min-height: 100vh;
+  background-color: #fff3e0;
+  padding: 20rpx;
+}
+
+/* ── 页面标题 ── */
+.page-header {
+  text-align: center;
+  padding: 40rpx 0;
+  margin-bottom: 20rpx;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #e65100;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.page-subtitle {
+  font-size: 24rpx;
+  color: #8d6e63;
+}
+
+/* ── 瀑布流容器 ── */
+.waterfall-container {
+  display: flex;
+  gap: 20rpx;
+}
+
+.waterfall-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+/* ── 媒体项 ── */
+.media-item {
+  background: #fff;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.media-item:active {
+  transform: scale(0.98);
+}
+
+.media-preview {
+  position: relative;
+  width: 100%;
+}
+
+.media-img {
+  width: 100%;
+  display: block;
+  border-radius: 12rpx;
+}
+
+/* ── 视频播放按钮 ── */
+.video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80rpx;
+  height: 80rpx;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-icon {
+  width: 0;
+  height: 0;
+  border-top: 20rpx solid transparent;
+  border-bottom: 20rpx solid transparent;
+  border-left: 30rpx solid #fff;
+  margin-left: 5rpx;
+}
+
+/* 响应式布局 */
+@media (max-width: 750rpx) {
+  .waterfall-container {
+    gap: 15rpx;
+  }
+  
+  .waterfall-column {
+    gap: 15rpx;
+  }
+  
+  .video-play-btn {
+    width: 60rpx;
+    height: 60rpx;
+  }
+  
+  .play-icon {
+    border-top: 15rpx solid transparent;
+    border-bottom: 15rpx solid transparent;
+    border-left: 22rpx solid #fff;
+  }
+}
+
+@media (max-width: 480rpx) {
+  .waterfall-container {
+    flex-direction: column;
+  }
+  
+  .waterfall-column {
+    gap: 10rpx;
+  }
+  
+  .media-img {
+    height: 300rpx;
+  }
+}

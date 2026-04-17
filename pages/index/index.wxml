@@ -1,0 +1,32 @@
+<view class="container">
+  <!-- 页头 -->
+  <view class="header">
+    <text class="title">暖色Vlog</text>
+    <text class="subtitle">记录生活中的温暖瞬间，分享美好时光</text>
+  </view>
+
+  <!-- 模块列表 -->
+  <view class="module-list">
+    <view
+      class="module-card"
+      wx:for="{{modules}}"
+      wx:key="id"
+      bindtap="onModuleTap"
+      data-index="{{index}}"
+    >
+      <image
+        class="module-cover"
+        src="{{item.cover}}"
+        mode="aspectFill"
+        lazy-load="true"
+      />
+      <view class="module-info">
+        <text class="module-name">{{item.name}}</text>
+        <text class="module-count">{{item.media.length}} 个媒体文件</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 淘宝风格自定义 TabBar -->
+<tb-tabbar />

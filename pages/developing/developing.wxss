@@ -1,0 +1,31 @@
+.container {
+  min-height: 100vh;
+  background-color: #fff3e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx;
+  padding-bottom: calc(100rpx + env(safe-area-inset-bottom));
+}
+
+.content {
+  text-align: center;
+  padding: 40rpx;
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #e65100;
+  margin-bottom: 20rpx;
+}
+
+.desc {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.5;
+}

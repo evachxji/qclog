@@ -1,0 +1,25 @@
+// pages/detail/utils.wxs
+
+/**
+ * 判断是否为视频
+ */
+function isVideo(url) {
+  return url.endsWith('.mp4');
+}
+
+/**
+ * 获取缩略图（视频使用模块封面图作为缩略图）
+ */
+function getThumbnail(media, mediaIndex, moduleCover) {
+  const mediaItem = media[mediaIndex];
+  if (isVideo(mediaItem)) {
+    // 对于视频，使用模块的封面图作为缩略图
+    return moduleCover;
+  }
+  return mediaItem;
+}
+
+module.exports = {
+  isVideo: isVideo,
+  getThumbnail: getThumbnail
+};

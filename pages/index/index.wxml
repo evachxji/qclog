@@ -14,6 +14,8 @@
       bindtap="onModuleTap"
       data-index="{{index}}"
     >
+      <!-- 序号标记 -->
+      <view class="module-number">{{index + 1}}</view>
       <image
         class="module-cover"
         src="{{item.cover}}"
@@ -22,7 +24,7 @@
       />
       <view class="module-info">
         <text class="module-name">{{item.name}}</text>
-        <text class="module-count">{{item.media.length}} 个媒体文件</text>
+        <text class="module-count">{{item.media.length}} 个珍贵瞬间</text>
       </view>
     </view>
   </view>

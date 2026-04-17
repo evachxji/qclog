@@ -1,35 +1,74 @@
 <view class="container">
+  <!-- 装饰背景 -->
+  <view class="decor-circle decor-circle-1"></view>
+  <view class="decor-circle decor-circle-2"></view>
+
   <!-- 页面标题 -->
   <view class="page-header">
     <text class="page-title">{{module.name}}</text>
-    <text class="page-subtitle">{{module.media.length}} 个媒体文件</text>
+    <text class="page-subtitle">{{media.length}} 个珍贵瞬间</text>
   </view>
 
   <!-- 瀑布流媒体列表 -->
-  <view class="waterfall-container">
-    <view class="waterfall-column" wx:for="{{columns}}" wx:key="columnIndex" wx:for-index="columnIndex">
+  <view class="waterfall-container" wx:if="{{media.length > 0}}">
+    <!-- 左列 -->
+    <view class="waterfall-column" id="column-left">
       <view
-        wx:for="{{item}}"
-        wx:key="itemIndex"
-        wx:for-index="itemIndex"
-        class="media-item"
+        wx:for="{{media}}"
+        wx:key="originalIndex"
+        wx:if="{{item.column === 'left'}}"
+        class="media-item {{item.orientation}}"
         bindtap="previewMedia"
-        data-index="{{item}}"
+        data-index="{{item.originalIndex}}"
       >
-        <!-- 图片或视频预览 -->
         <view class="media-preview">
           <image
             class="media-img"
-            src="{{media[item].thumbnail}}"
+            src="{{item.thumbnail}}"
             mode="aspectFill"
             lazy-load="true"
+            bindload="onImageLoad"
+            data-original-index="{{item.originalIndex}}"
           />
           <!-- 视频播放按钮 -->
-          <view wx:if="{{media[item].isVideo}}" class="video-play-btn">
+          <view wx:if="{{item.isVideo}}" class="video-play-btn">
             <view class="play-icon"></view>
           </view>
         </view>
       </view>
     </view>
+
+    <!-- 右列 -->
+    <view class="waterfall-column" id="column-right">
+      <view
+        wx:for="{{media}}"
+        wx:key="originalIndex"
+        wx:if="{{item.column === 'right'}}"
+        class="media-item {{item.orientation}}"
+        bindtap="previewMedia"
+        data-index="{{item.originalIndex}}"
+      >
+        <view class="media-preview">
+          <image
+            class="media-img"
+            src="{{item.thumbnail}}"
+            mode="aspectFill"
+            lazy-load="true"
+            bindload="onImageLoad"
+            data-original-index="{{item.originalIndex}}"
+          />
+          <!-- 视频播放按钮 -->
+          <view wx:if="{{item.isVideo}}" class="video-play-btn">
+            <view class="play-icon"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{media.length === 0}}">
+    <view class="empty-icon">📷</view>
+    <text class="empty-text">暂无媒体文件</text>
   </view>
 </view>

@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "开发中",
-  "navigationBarBackgroundColor": "#e65100",
+  "navigationBarBackgroundColor": "#e85365",
   "navigationBarTextStyle": "white",
   "usingComponents": {
     "tb-tabbar": "/custom-tab-bar/index"

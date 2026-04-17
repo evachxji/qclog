@@ -1,57 +1,142 @@
 /* pages/index/index.wxss */
 
-.container {
-  padding: 20rpx;
-  padding-bottom: calc(100rpx + env(safe-area-inset-bottom));
+page {
+  background: linear-gradient(180deg, #fff8f8 0%, #ffe8ec 50%, #ffd4dd 100%);
   min-height: 100vh;
-  background-color: #fff3e0;
+}
+
+.container {
+  padding: 30rpx;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ── 装饰背景 ── */
+.container::before {
+  content: '';
+  position: fixed;
+  top: -200rpx;
+  right: -200rpx;
+  width: 600rpx;
+  height: 600rpx;
+  background: radial-gradient(circle, rgba(255, 143, 163, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container::after {
+  content: '';
+  position: fixed;
+  bottom: 100rpx;
+  left: -150rpx;
+  width: 400rpx;
+  height: 400rpx;
+  background: radial-gradient(circle, rgba(232, 83, 101, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ── 页头 ── */
 .header {
   text-align: center;
-  padding: 60rpx 30rpx;
+  padding: 60rpx 40rpx;
   margin-bottom: 40rpx;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 24rpx;
-  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.10);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 249, 0.95) 100%);
+  border-radius: 32rpx;
+  box-shadow: 
+    0 12rpx 40rpx rgba(232, 83, 101, 0.12),
+    0 4rpx 12rpx rgba(232, 83, 101, 0.06);
+  position: relative;
+  z-index: 1;
+  border: 1rpx solid rgba(255, 143, 163, 0.15);
+}
+
+.header::before {
+  content: '✦';
+  position: absolute;
+  top: 20rpx;
+  left: 30rpx;
+  font-size: 24rpx;
+  color: rgba(255, 143, 163, 0.4);
+}
+
+.header::after {
+  content: '✦';
+  position: absolute;
+  bottom: 20rpx;
+  right: 30rpx;
+  font-size: 24rpx;
+  color: rgba(255, 143, 163, 0.4);
 }
 
 .title {
   display: block;
   font-size: 56rpx;
-  font-weight: bold;
-  color: #e65100;
+  font-weight: 700;
+  background: linear-gradient(135deg, #e85365 0%, #ff6b81 50%, #ff8fa3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   margin-bottom: 16rpx;
-  text-shadow: 2rpx 2rpx 8rpx rgba(0, 0, 0, 0.10);
+  letter-spacing: 8rpx;
+  text-shadow: 0 4rpx 20rpx rgba(232, 83, 101, 0.15);
 }
 
 .subtitle {
   display: block;
-  font-size: 28rpx;
-  color: #8d6e63;
+  font-size: 26rpx;
+  color: #c97b88;
+  font-weight: 500;
 }
 
 /* ── 模块列表 ── */
 .module-list {
   display: flex;
   flex-direction: column;
-  gap: 30rpx;
+  gap: 24rpx;
+  position: relative;
+  z-index: 1;
 }
 
 /* ── 模块卡片 ── */
 .module-card {
-  background: #fff;
-  border-radius: 24rpx;
+  background: linear-gradient(145deg, #ffffff 0%, #fff8f9 100%);
+  border-radius: 28rpx;
   overflow: hidden;
-  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s;
+  box-shadow: 
+    0 8rpx 32rpx rgba(232, 83, 101, 0.1),
+    0 2rpx 8rpx rgba(232, 83, 101, 0.05);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   display: flex;
   align-items: center;
+  border: 1rpx solid rgba(255, 143, 163, 0.1);
+  position: relative;
+}
+
+.module-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, #e85365 0%, #ff8fa3 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .module-card:active {
-  transform: scale(0.97);
+  transform: scale(0.97) translateY(4rpx);
+  box-shadow: 
+    0 4rpx 16rpx rgba(232, 83, 101, 0.12),
+    0 1rpx 4rpx rgba(232, 83, 101, 0.06);
+}
+
+.module-card:active::before {
+  opacity: 1;
 }
 
 .module-cover {
@@ -59,36 +144,75 @@
   height: 140rpx;
   display: block;
   flex-shrink: 0;
+  object-fit: cover;
 }
 
 .module-info {
   flex: 1;
-  padding: 24rpx 30rpx;
+  padding: 28rpx 32rpx;
 }
 
 .module-name {
   display: block;
   font-size: 32rpx;
-  font-weight: bold;
-  color: #e65100;
-  margin-bottom: 8rpx;
+  font-weight: 600;
+  color: #e85365;
+  margin-bottom: 10rpx;
+  letter-spacing: 2rpx;
 }
 
 .module-count {
   display: block;
-  font-size: 26rpx;
-  color: #8d6e63;
+  font-size: 24rpx;
+  color: #c97b88;
+  font-weight: 400;
+}
+
+.module-count::before {
+  content: '✿ ';
+  color: #ff8fa3;
+}
+
+/* ── 序号标记 ── */
+.module-number {
+  position: absolute;
+  top: 16rpx;
+  right: 16rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background: linear-gradient(135deg, #e85365 0%, #ff8fa3 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22rpx;
+  font-weight: 600;
+  box-shadow: 0 4rpx 12rpx rgba(232, 83, 101, 0.3);
 }
 
 /* 响应式布局 */
 @media (max-width: 750rpx) {
+  .container {
+    padding: 20rpx;
+  }
+  
+  .header {
+    padding: 40rpx 30rpx;
+    border-radius: 24rpx;
+  }
+  
+  .title {
+    font-size: 48rpx;
+  }
+  
   .module-cover {
     width: 180rpx;
     height: 120rpx;
   }
   
   .module-info {
-    padding: 16rpx 20rpx;
+    padding: 20rpx 24rpx;
   }
   
   .module-name {
@@ -96,7 +220,7 @@
   }
   
   .module-count {
-    font-size: 24rpx;
+    font-size: 22rpx;
   }
 }
 
@@ -112,7 +236,12 @@
   }
   
   .module-info {
-    padding: 16rpx 20rpx;
+    padding: 20rpx 24rpx;
     text-align: center;
+  }
+  
+  .module-number {
+    top: 12rpx;
+    right: 12rpx;
   }
 }

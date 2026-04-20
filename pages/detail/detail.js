@@ -48,6 +48,11 @@ Page({
       module: moduleData,
       media: processedMedia
     })
+    
+    // 设置页面标题为模块名称
+    wx.setNavigationBarTitle({
+      title: moduleData.name
+    })
 
     // 初始化瀑布流布局
     this.initWaterfall()
